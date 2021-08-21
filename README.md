@@ -1,4 +1,8 @@
+[![CD](https://github.com/AntoniosBarotsis/ATP-API/actions/workflows/cd.yml/badge.svg)](https://github.com/AntoniosBarotsis/ATP-API/actions/workflows/cd.yml)
+
 # ATP-API
+
+This API will provide tennis related information scraped from the [ATP Tour](https://www.atptour.com) website. 
 
 ## Local Development
 
