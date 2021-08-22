@@ -10,7 +10,7 @@ if (port == "") {
   port <- 8080
 }
 
-server <- plumb("plumber.R")
+server <- plumb("health.R")
 
 players <- pr("players.R")
 server %>% pr_mount("/players", players)
