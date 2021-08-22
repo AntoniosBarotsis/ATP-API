@@ -1,9 +1,12 @@
 library(plumber)
 library(redux)
+library(logging)
 
 port <- Sys.getenv('PORT')
 
 if (port == "") {
+  logwarn("PORT env variable not found, defaulting to 8080")
+  
   port <- 8080
 }
 
@@ -15,7 +18,12 @@ server %>% pr_mount("/players", players)
 # Set r to NULL if no redis database is detected
 r <- tryCatch(
   { redux::hiredis() }, 
-  error = function(e) NULL
+  error = function(e) {
+    logerror("Connection to Redis Database failed")
+    
+    
+    NULL
+  }
 )
 
 server$run(

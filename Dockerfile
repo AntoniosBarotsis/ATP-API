@@ -20,6 +20,6 @@ RUN printf "#!/bin/sh\nexit 0" > /usr/sbin/policy-rc.d
 
 RUN apt-get install -y redis-server
 
-RUN R -e "install.packages(c('plumber', 'redux'))"
+RUN R -e "install.packages(c('plumber', 'redux', 'logging'))"
 
 CMD ["/bin/bash", "start.sh"]
