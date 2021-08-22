@@ -1,7 +1,7 @@
 #* Basic health diagnostics
 #* 
 #* @get /health
-function() {
+health <- function() {
   redis_status <- "NOT DETECTED"
   
   if (!is.null(r)) {

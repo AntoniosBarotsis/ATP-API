@@ -10,9 +10,9 @@ if (port == "") {
   port <- 8080
 }
 
-server <- plumb("health.R")
+server <- plumb("R/health.R")
 
-players <- pr("players.R")
+players <- pr("R/players.R")
 server %>% pr_mount("/players", players)
 
 # Set r to NULL if no redis database is detected
@@ -26,8 +26,14 @@ r <- tryCatch(
   }
 )
 
-server$run(
-	host = '0.0.0.0',
-	port = as.numeric(port),
-	docs = TRUE
-)
+loginfo(paste0("ENV = \"", Sys.getenv('ENV'), "\""))
+
+if (Sys.getenv('ENV') == "PROD") {
+  loginfo("Starting server...")
+  
+  server$run(
+    host = '0.0.0.0',
+    port = as.numeric(port),
+    docs = TRUE
+  )
+}

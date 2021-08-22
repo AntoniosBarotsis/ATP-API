@@ -2,7 +2,7 @@ FROM r-base
 
 WORKDIR /app
 
-COPY ./R start.sh ./
+COPY . ./
 
 # provide the port for Plumber, so that running/testing outside of Heroku is possible
 # Heroku will override the PORT value at runtime
@@ -20,6 +20,6 @@ RUN printf "#!/bin/sh\nexit 0" > /usr/sbin/policy-rc.d
 
 RUN apt-get install -y redis-server
 
-RUN R -e "install.packages(c('plumber', 'redux', 'logging'))"
+RUN R -e "install.packages(c('plumber', 'redux', 'logging', 'callr'))"
 
 CMD ["/bin/bash", "start.sh"]

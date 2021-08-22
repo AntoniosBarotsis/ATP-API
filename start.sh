@@ -15,4 +15,6 @@ while [ -z "$PONG" ]; do
 done
 echo "Redis at host '$HOST', REDIS_PORT '$REDIS_PORT' fully started."
 
-Rscript app.R
+export ENV=PROD
+
+Rscript R/app.R
