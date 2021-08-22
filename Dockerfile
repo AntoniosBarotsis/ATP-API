@@ -1,6 +1,7 @@
 FROM r-base
 
 COPY ./R ./app
+COPY start.sh ./app
 
 WORKDIR /app
 
@@ -9,11 +10,12 @@ WORKDIR /app
 ENV PORT=8080
 
 # install random dependencies
-RUN apt-get update -qq && apt-get install -y \
+RUN apt-get update -qq && apt-get upgrade -y && apt-get install -y \
       libssl-dev \
       libcurl4-gnutls-dev \
-      libsodium-dev
+      libsodium-dev \
+      libhiredis-dev
 
-RUN R -e "install.packages('plumber')"
+RUN R -e "install.packages(c('plumber', 'redux'))"
 
-CMD ["Rscript", "app.R"]
+CMD ["/bin/bash", "start.sh"]
