@@ -14,7 +14,14 @@ RUN apt-get update -qq && apt-get upgrade -y && apt-get install -y \
       libssl-dev \
       libcurl4-gnutls-dev \
       libsodium-dev \
-      libhiredis-dev
+      libhiredis-dev \
+      apt-utils
+
+RUN printf "#!/bin/sh\nexit 0" > /usr/sbin/policy-rc.d
+
+RUN apt-get install -y redis-server
+RUN redis-server --daemonize yes
+
 
 RUN R -e "install.packages(c('plumber', 'redux'))"
 
