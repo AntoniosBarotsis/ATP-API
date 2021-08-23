@@ -1,4 +1,4 @@
-test_that("API is alive", {
+test_that("Health function works", {
   res <- list(
     server = "OK", 
     redis = "NOT DETECTED"
