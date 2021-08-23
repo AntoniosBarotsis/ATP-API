@@ -1,5 +1,7 @@
 comment: false
 
+ignore:
+  - R/app.R
 coverage:
   status:
     project:
