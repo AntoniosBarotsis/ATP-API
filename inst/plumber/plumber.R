@@ -4,3 +4,9 @@ library(plumber)
 #* 
 #* @get /health
 ATPAPI:::health
+
+#* Echo back the input
+#* 
+#* @param name The name of the player
+#* @get /<name>
+ATPAPI:::getPlayer
