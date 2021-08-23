@@ -33,7 +33,6 @@ if (Sys.getenv('ENV') == "PROD") {
   
   server$run(
     host = '0.0.0.0',
-    port = as.numeric(port),
-    docs = TRUE
+    port = as.numeric(port)
   )
 }

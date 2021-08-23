@@ -1,4 +1,4 @@
-FROM r-base
+FROM rstudio/plumber
 
 WORKDIR /app
 
@@ -20,6 +20,8 @@ RUN printf "#!/bin/sh\nexit 0" > /usr/sbin/policy-rc.d
 
 RUN apt-get install -y redis-server
 
-RUN R -e "install.packages(c('plumber', 'redux', 'logging', 'callr', 'rcmdcheck', 'testthat', 'httr', 'covr'))"
+RUN R -e "install.packages(c('redux', 'logging', 'callr', 'rcmdcheck', 'testthat', 'httr', 'covr'))"
 
-CMD ["/bin/bash", "start.sh"]
+RUN chmod +x /app/start.sh
+
+ENTRYPOINT /app/start.sh
