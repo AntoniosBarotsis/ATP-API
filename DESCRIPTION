@@ -17,8 +17,7 @@ Imports:
     plumber,
     redux,
     logging,
-Suggests: 
-    testthat,
     httr,
-    callr,
-    covr
+    testthat,
+    covr,
+    callr
