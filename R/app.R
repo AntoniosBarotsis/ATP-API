@@ -29,6 +29,14 @@ r <- tryCatch(
 # Use this when referencing the redis client to help with testing
 getRedisClient <- function() r
 
+getCache <- function(key) {
+  r$GET(key)
+}
+
+setCache <- function(key, value, expireSeconds = 60) {
+  r$command(c("SET", key, value, "EX", expireSeconds))
+}
+
 loginfo(paste0("ENV = \"", Sys.getenv('ENV'), "\""))
 
 if (Sys.getenv('ENV') == "PROD") {

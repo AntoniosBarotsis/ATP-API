@@ -2,30 +2,31 @@
 #* 
 #* @param name The name of the player
 #* @get /<name>
-function(name) {
+getPlayer <- function(name) {
   res <- getAndSetPlayer(name)
   
-  if (is.null(res)) {
-    list(msg = paste0("Hello ", "(scraped data)", " [FROM SITE]"))
-  } else {
-    list(msg = paste0("Hello ", res, " [FROM CACHE]"))
-  }
+  res
 }
 
 getAndSetPlayer <- function(name) {
+  r <- getRedisClient()
+
   # No redis db detected
   if (is.null(r)) {
     return(NULL)
   }
 
-  res <- r$GET(paste0("player::", name))
+  res <- getCache(paste0("player::", name))
   
   # Cache Miss
   if (is.null(res)) {
-    r$command(c("SET", paste0("player::", name), "foo", "EX", 60))
+    # Scrape the data here
     
-    return(NULL)
+    
+    setCache(paste0("player::", name), name)
+    
+    return(list(data = name, from_cache = FALSE))
   } 
 
-  return(res)
+  return(list(data = name, from_cache = TRUE))
 }
