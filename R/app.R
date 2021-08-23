@@ -26,6 +26,9 @@ r <- tryCatch(
   }
 )
 
+# Use this when referencing the redis client to help with testing
+getRedisClient <- function() r
+
 loginfo(paste0("ENV = \"", Sys.getenv('ENV'), "\""))
 
 if (Sys.getenv('ENV') == "PROD") {

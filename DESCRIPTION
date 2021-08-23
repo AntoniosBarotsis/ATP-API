@@ -20,4 +20,5 @@ Imports:
     httr,
     testthat,
     covr,
-    callr
+    callr,
+    mockr

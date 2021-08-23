@@ -4,7 +4,7 @@
 health <- function() {
   redis_status <- "NOT DETECTED"
   
-  if (!is.null(r)) {
+  if (!is.null(getRedisClient())) {
     redis_status <- "OK"
   }
   
