@@ -3,19 +3,21 @@
 #* @param name The name of the player
 #* @get /<name>
 getPlayer <- function(name) {
+  # Cache does not exist
+  if (!ensureCache()) {
+    # Scrape here and set
+    
+    setCache(paste0("player::", name), name)
+    
+    return(list(data = "data", from_cache = FALSE))
+  } 
+
   res <- getAndSetPlayer(name)
   
   res
 }
 
 getAndSetPlayer <- function(name) {
-  r <- getRedisClient()
-
-  # No redis db detected
-  if (is.null(r)) {
-    return(NULL)
-  }
-
   res <- getCache(paste0("player::", name))
   
   # Cache Miss
@@ -25,8 +27,8 @@ getAndSetPlayer <- function(name) {
     
     setCache(paste0("player::", name), name)
     
-    return(list(data = name, from_cache = FALSE))
+    return(list(data = "data", from_cache = FALSE))
   } 
 
-  return(list(data = name, from_cache = TRUE))
+  return(list(data = "data", from_cache = TRUE))
 }

@@ -29,6 +29,8 @@ r <- tryCatch(
 # Use this when referencing the redis client to help with testing
 getRedisClient <- function() r
 
+ensureCache <- function() !is.null(getRedisClient())
+
 getCache <- function(key) {
   r$GET(key)
 }
