@@ -17,10 +17,10 @@ test_that("API is alive", {
 
 test_that("health endpoint works", {
   # Send API request
-  r <- httr::GET(root_path, port = 8000, path = "health")
+  req <- httr::GET(root_path, port = 8000, path = "health")
 
   # Check response
-  expect_equal(r$status_code, 200)
+  expect_equal(req$status_code, 200)
 })
 
 Sys.sleep(5)
