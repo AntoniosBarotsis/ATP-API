@@ -27,17 +27,29 @@ r <- tryCatch(
 )
 
 # Use this when referencing the redis client to help with testing
-getRedisClient <- function() r
+getRedisClient <- function() {
+  r
+}
 
-ensureCache <- function() !is.null(getRedisClient())
+# Returns true if the redis client is not null
+ensureCache <- function() {
+  !is.null(getRedisClient())
+}
 
+# Returns the requested value from the cache
 getCache <- function(key) {
   r$GET(key)
 }
 
+# Sets a key-value pair in the cache
 setCache <- function(key, value, expireSeconds = 60) {
   r$command(c("SET", key, value, "EX", expireSeconds))
 }
+
+refreshExpire <- function(key, expireSeconds = 60) {
+  r$EXPIRE(key, expireSeconds)
+}
+
 
 loginfo(paste0("ENV = \"", Sys.getenv('ENV'), "\""))
 
