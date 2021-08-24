@@ -1,6 +1,5 @@
 <!-- badges: start -->
-[![CD](https://github.com/AntoniosBarotsis/ATP-API/actions/workflows/cd.yml/badge.svg)](https://github.com/AntoniosBarotsis/ATP-API/actions/workflows/cd.yml)
-[![R-CMD-check](https://github.com/AntoniosBarotsis/ATP-API/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/AntoniosBarotsis/ATP-API/actions/workflows/R-CMD-check.yaml)
+[![CICD](https://github.com/AntoniosBarotsis/ATP-API/actions/workflows/cicd.yml/badge.svg)](https://github.com/AntoniosBarotsis/ATP-API/actions/workflows/cicd.yml)
 [![Codecov test coverage](https://codecov.io/gh/AntoniosBarotsis/ATP-API/branch/master/graph/badge.svg)](https://codecov.io/gh/AntoniosBarotsis/ATP-API?branch=master)
 <!-- badges: end -->
 
