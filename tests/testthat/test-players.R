@@ -26,7 +26,8 @@ test_that("getAndSetPlayer function with redis hit", {
   name <- "Tony"
   
   result <- with_mock(
-    getCache = function(key) "data", {
+    getCache = function(key) "data",
+    refreshExpire = function(key) "", {
       getAndSetPlayer(name)
     }
   )
