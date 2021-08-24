@@ -19,4 +19,7 @@ docker build -t atp-api . --no-cache --progress=plain
 docker run --rm -d -p 8080:8080 atp-api
 ```
 
-You can run the tests with `rcmdcheck::rcmdcheck()`
+You can run the tests with `devtools::test()`.
+
+In order to run the app outside of a container you must run `Sys.setenv(ENV="PROD")` beforehand, note that the cache will not be used outside of a container
+(unless you are running your own instance).
