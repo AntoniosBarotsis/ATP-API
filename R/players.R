@@ -17,6 +17,8 @@ getPlayer <- function(name) {
   res
 }
 
+# Attempts to get the value from the cache.
+# In case of a miss, it sets the value
 getAndSetPlayer <- function(name) {
   res <- getCache(paste0("player::", name))
   
@@ -28,7 +30,10 @@ getAndSetPlayer <- function(name) {
     setCache(paste0("player::", name), name)
     
     return(list(data = "data", from_cache = FALSE))
-  } 
+  } else {
+    # Cache hit, refresh expire
+    refreshExpire(paste0("player::", name))
+  }
 
   return(list(data = "data", from_cache = TRUE))
 }
