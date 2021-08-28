@@ -8,6 +8,12 @@
 
 This API will provide tennis related information scraped from the [ATP Tour](https://www.atptour.com) website. 
 
+## ⚠️ Project Discontinued ⚠️
+
+The website is using Cloudflare which protects against scraping so this whole project is impossible to complete and is therefore discontinued.
+I will keep the repository up however because of all the things that I configured (docker, redis, codecov, CICD, unit testing and mocks) since I know
+I'm gonna look back to this whenever I decide to build something new in R.
+
 ## Local Development
 
 Note that RStudio locks some files that are required by Docker which results in the following
